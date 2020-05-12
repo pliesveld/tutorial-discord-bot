@@ -2,6 +2,7 @@
 import os
 import random
 import discord
+import emojis
 from discord.ext import commands
 from dotenv import load_dotenv
 # from ec2_metadata import ec2_metadata
@@ -42,6 +43,15 @@ async def nine_nine(ctx):
 
     response = random.choice(brooklyn_99_quotes)
     await ctx.send(response)
+
+
+@bot.command(name='emoji', help='Responds with a random emoji')
+async def random_emoji(ctx):
+    response = str(''.join([random.choice(emojis.db.utils.db.EMOJI_DB).emoji for x in range(3)]))
+    await ctx.send(response)
+
+
+
  
 bot.run(TOKEN)
 
